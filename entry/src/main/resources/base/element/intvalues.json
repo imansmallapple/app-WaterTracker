@@ -1,0 +1,16 @@
+{
+  "integer": [
+    {
+      "name": "font_size_normal",
+      "value": 20
+    },
+    {
+      "name": "font_size_big",
+      "value": 50
+    },
+    {
+      "name": "default_spacing",
+      "value": 10
+    }
+  ]
+}

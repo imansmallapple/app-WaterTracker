@@ -1,0 +1,49 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "material": {
+          "certpath": "C:/Users/a60067975/.ohos/config/openharmony/default_WaterTracker_iBzpXXTj75RT9u_cSOzbSkcMqAxWxzYOk-6aDHN7f9w=.cer",
+          "storePassword": "0000001B39F093F89ECBABAB61F0BE5BCE78C907134D427BB5D86235C4163644A4B95E8EFF1F6B8D453094",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BB4B3AE1A13DA6EEC4CB327A5A125AF34FC1B8751F8669C30D10F3CBB853A86D5B5F3A136F7229E",
+          "profile": "C:/Users/a60067975/.ohos/config/openharmony/default_WaterTracker_iBzpXXTj75RT9u_cSOzbSkcMqAxWxzYOk-6aDHN7f9w=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:/Users/a60067975/.ohos/config/openharmony/default_WaterTracker_iBzpXXTj75RT9u_cSOzbSkcMqAxWxzYOk-6aDHN7f9w=.p12"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compileSdkVersion": 10,
+        "compatibleSdkVersion": 9,
+        "runtimeOS": "OpenHarmony"
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}

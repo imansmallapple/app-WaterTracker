@@ -1,0 +1,88 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "Water Tracker"
+    },
+    {
+      "name": "app_name",
+      "value": "Water Tracker"
+    },
+    {
+      "name": "button_drink_add",
+      "value": "Add Water"
+    },
+    {
+      "name": "label_big_glass",
+      "value": "Big Glass"
+    },
+    {
+      "name": "label_small_glass",
+      "value": "Small Glass"
+    },
+    {
+      "name": "label_custom",
+      "value": "Custom amount"
+    },
+    {
+      "name": "button_add",
+      "value": "Add"
+    },
+    {
+      "name": "label_edit_defaults",
+      "value": "Edit defaults"
+    },
+    {
+      "name": "button_reset_day",
+      "value": "Reset day"
+    },
+    {
+      "name": "button_close",
+      "value": "Close"
+    },
+    {
+      "name": "label_drink_reminder",
+      "value": "You haven't had any water in some time. How about a glass?"
+    },
+    {
+      "name": "error_negative_amount",
+      "value": "Can't add negative value"
+    },
+    {
+      "name": "button_add_big_glass",
+      "value": "Add big glass"
+    },
+    {
+      "name": "button_add_small_glass",
+      "value": "Add small glass"
+    },
+    {
+      "name": "label_modify_defaults",
+      "value": "Modify default values"
+    },
+    {
+      "name": "label_big_glass_volume",
+      "value": "Big glass volume in ml"
+    },
+    {
+      "name": "label_small_glass_volume",
+      "value": "Small glass volume in ml"
+    },
+    {
+      "name": "label_save",
+      "value": "Save"
+    },
+    {
+      "name": "label_close",
+      "value": "Close"
+    }
+  ]
+}
