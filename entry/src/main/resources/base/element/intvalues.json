@@ -1,8 +1,12 @@
 {
   "integer": [
     {
-      "name": "font_size_normal",
+      "name": "font_size_small",
       "value": 20
+    },
+    {
+      "name": "font_size_medium",
+      "value": 30
     },
     {
       "name": "font_size_big",
@@ -11,6 +15,10 @@
     {
       "name": "default_spacing",
       "value": 10
+    }
+    {
+      "name": "input_width",
+      "value": 80
     }
   ]
 }

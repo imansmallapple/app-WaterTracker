@@ -13,6 +13,14 @@
       "value": "Water Tracker"
     },
     {
+      "name": "plus",
+      "value": " + "
+    },
+    {
+      "name": "minus",
+      "value": " - "
+    },
+    {
       "name": "app_name",
       "value": "Water Tracker"
     },

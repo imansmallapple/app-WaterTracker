@@ -3,17 +3,14 @@ import { Utility } from '../model/Utility';
 import intl from '@ohos.intl';
 
 export class WaterKeeper {
-  private bigGlassDefaultLink: SubscribedAbstractProperty<number> | null = null;
-  private smallGlassDefaultLink: SubscribedAbstractProperty<number> | null = null;
-  private waterLevelLink: SubscribedAbstractProperty<number> | null = null;
   private currentDate: string;
   private dataPreferences: data_preferences.Preferences = null;
+  private storage: LocalStorage;
 
-  constructor(context: Context) {
-
-
-    let promise = data_preferences.getPreferences(context, 'water');
-    promise.then((pref) => {
+  constructor(context: Context, storage: LocalStorage) {
+    this.storage = storage;
+    data_preferences.getPreferences(context, Utility.preferencesName)
+    .then((pref) => {
       this.dataPreferences = pref;
       this.preparePersistence();
     })
@@ -25,40 +22,49 @@ export class WaterKeeper {
     let dateFormat = new intl.DateTimeFormat('en-GB', {
       dateStyle: 'short'
     });
-    console.log("AAA date = " + dateFormat.format(new Date()).toString())
     return dateFormat.format(new Date()).toString();
   }
 
   private preparePersistence(): void {
-    this.getValuesFromPreferences(this.dataPreferences, Utility.bigGlassDefaultName, Utility.bigGlassDefaultValue);
-    this.getValuesFromPreferences(this.dataPreferences, Utility.smallGlassDefaultName, Utility.smallGlassDefaultValue)
+    console.log("AAA prepare Persistence")
 
-    this.bigGlassDefaultLink = AppStorage.link(Utility.bigGlassDefaultName);
-    this.smallGlassDefaultLink = AppStorage.link(Utility.smallGlassDefaultName);
+    this.dataPreferences.get(Utility.bigGlassDefaultName, Utility.bigGlassDefaultValue).then((value) => {
+      console.log("AAA prepare big glass " + value)
+      this.storage.setOrCreate(Utility.bigGlassDefaultName, value);
+    })
 
-    if (!this.dataPreferences.hasSync(this.currentDate)) {
-      AppStorage.setOrCreate(Utility.waterLevel, 0);
-    } else {
-      AppStorage.setOrCreate(Utility.waterLevel, this.dataPreferences.getSync(this.currentDate, 0));
-    }
-    this.waterLevelLink = AppStorage.link(Utility.waterLevel);
+    this.dataPreferences.get(Utility.smallGlassDefaultName, Utility.smallGlassDefaultValue).then((value) => {
+      console.log("AAA prepare small glass " + value)
+      this.storage.setOrCreate(Utility.smallGlassDefaultName, value);
+    })
+
+    this.dataPreferences.get(this.currentDate, 0).then((value) => {
+      console.log("AAA prepare water " + value)
+      this.storage.setOrCreate(Utility.waterLevel, value)
+    })
   }
 
-  private getValuesFromPreferences(dataPreferences: data_preferences.Preferences, name: string, value: number) {
-    if (!dataPreferences.hasSync(name)) {
-      AppStorage.setOrCreate(name, value);
-    } else {
-      AppStorage.setOrCreate(name,
-        Number(dataPreferences.getSync(name, 0)));
-    }
-
+  getWaterLevel(): number {
+    return this.storage.get(Utility.waterLevel);
   }
 
   saveToPersistence() {
-    console.log("AAA water " + this.waterLevelLink?.get());
-    this.dataPreferences.putSync(Utility.bigGlassDefaultName, Number(this.bigGlassDefaultLink?.get()));
-    this.dataPreferences.putSync(Utility.smallGlassDefaultName, Number(this.smallGlassDefaultLink?.get()));
-    this.dataPreferences.putSync(this.currentDate, Number(this.waterLevelLink?.get()));
-    this.dataPreferences.flush();
+    console.log("AAA saveToPersistence big glass " + this.storage.get(Utility.bigGlassDefaultName))
+    this.dataPreferences.put(Utility.bigGlassDefaultName, this.storage.get(Utility.bigGlassDefaultName))
+      .then(() => {
+        this.dataPreferences.flush();
+      });
+    console.log("AAA saveToPersistence small glass " + this.storage.get(Utility.smallGlassDefaultName))
+
+    this.dataPreferences.put(Utility.smallGlassDefaultName, this.storage.get(Utility.smallGlassDefaultName))
+      .then(() => {
+        this.dataPreferences.flush();
+      });
+    console.log("AAA saveToPersistence water " + this.storage.get(Utility.waterLevel))
+
+    this.dataPreferences.put(this.currentDate, this.storage.get(Utility.waterLevel))
+      .then(() => {
+        this.dataPreferences.flush();
+      });
   }
 }

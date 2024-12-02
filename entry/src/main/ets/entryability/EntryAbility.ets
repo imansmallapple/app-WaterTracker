@@ -6,14 +6,16 @@ import window from '@ohos.window';
 import { WaterKeeper } from './WaterKeeper';
 import data_preferences from '@ohos.data.preferences'
 import featureAbility from '@ohos.ability.featureAbility';
+import { Utility } from '../model/Utility';
 
 export default class EntryAbility extends UIAbility {
   private waterKeeper : WaterKeeper;
+  private storage : LocalStorage;
 
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    this.waterKeeper = new WaterKeeper(this.context);
-
+    this.storage = new LocalStorage();
+    this.waterKeeper = new WaterKeeper(this.context, this.storage);
   }
 
   onDestroy(): void {
@@ -23,7 +25,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    windowStage.loadContent('pages/Index', (err) => {
+    windowStage.loadContent('pages/Index', this.storage, (err) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
@@ -40,6 +42,7 @@ export default class EntryAbility extends UIAbility {
   onForeground(): void {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+    // this.waterKeeper.getValuesFromPersistence();
   }
 
   onBackground(): void {

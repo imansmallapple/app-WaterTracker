@@ -5,26 +5,25 @@ let AlignRue: Record<string, Record<string, string | VerticalAlign | HorizontalA
   'top': { 'anchor': '__container__', 'align': VerticalAlign.Top },
   'right': { 'anchor': '__container__', 'align': HorizontalAlign.Center }
 }
-let BWC: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
 const perc = "50%"
+let storage = LocalStorage.getShared();
 
-@Entry
+@Entry(storage)
 @Component
 struct Index {
   @State private glassState: number = 0;
-  @StorageProp('water_level') private waterState: number = 0;
+  @LocalStorageProp('water_level') private waterState: number = 0;
 
   onPageShow(): void {
     this.calculateWateredState(); //recalculate the watered state to update the graphic
   }
 
   private calculateWateredState(): void {
-    console.log("AAA water = " + this.waterState);
     let currTime = new Date().getTime();
     let morning = new Date().setHours(6, 0, 0, 0);
     let timeDifInHours = (currTime - morning) / 3600000; //we assume 6 AM to be start of the day
     let wateredCoefficient = this.waterState / timeDifInHours;
-    if (wateredCoefficient < Utility.unWateredState ){
+    if (wateredCoefficient < Utility.unWateredState) {
       this.glassState = Utility.sadGlass;
     } else if (wateredCoefficient < Utility.midWateredState) {
       this.glassState = Utility.neutralGlass;
@@ -65,7 +64,10 @@ struct Index {
       Divider().strokeWidth(20).color($r('app.color.water_background'))
 
       Button() {
-        Text($r('app.string.button_drink_add')).fontSize(30).margin(10).fontWeight(FontWeight.Bold)
+        Text($r('app.string.button_drink_add'))
+          .fontSize($r('app.integer.font_size_medium'))
+          .margin(10)
+          .fontWeight(FontWeight.Bold)
       }
       .onClick(() => {
         router.pushUrl({

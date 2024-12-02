@@ -1,27 +1,36 @@
 import { Utility } from '../model/Utility';
 import router from '@ohos.router';
 
-@Entry
+let storage = LocalStorage.getShared();
+
+@Entry(storage)
 @Component
 struct AddWaterMenu {
   @State private bigGlassAmount: number = 0;
   @State private smallGlassAmount: number = 0;
   @State private customAmount: number = 0;
   @State private sumOfWater: number = 0;
-  @StorageProp('water') private waterLevelInMilliLiters: number = 0;
-  @StorageProp('big_glass_default') private defaultBigGlass: number = Utility.bigGlassDefaultValue;
-  @StorageProp('small_glass_default') private defaultSmallGlass: number = Utility.smallGlassDefaultValue;
+  @LocalStorageLink('water_level') private waterLevelInMilliLiters: number = 0;
+  @LocalStorageLink('small_glass_default') private defaultSmallGlass: number = Utility.smallGlassDefaultValue;
+  @LocalStorageLink('big_glass_default') private bigGlassDefault: number = Utility.bigGlassDefaultValue;
+
+  aboutToAppear(): void {
+    console.log("AAA addwater aboutToAppear water " + this.waterLevelInMilliLiters)
+    console.log("AAA addwater aboutToAppear big " + this.bigGlassDefault)
+    console.log("AAA addwater aboutToAppear small " + this.defaultSmallGlass)
+
+  }
 
   private calculateWater() {
     this.sumOfWater =
-      this.bigGlassAmount * this.defaultBigGlass
+      this.bigGlassAmount * this.bigGlassDefault
         + this.smallGlassAmount * this.defaultSmallGlass
         + this.customAmount;
   }
 
   private saveToDB() {
     this.waterLevelInMilliLiters = this.waterLevelInMilliLiters + this.sumOfWater;
-    AppStorage.set(Utility.waterLevel, this.waterLevelInMilliLiters);
+    storage.set(Utility.waterLevel, this.waterLevelInMilliLiters);
   }
 
   build() {
@@ -33,9 +42,10 @@ struct AddWaterMenu {
             .autoResize(true)
             .height("20%")
           Text($r('app.string.label_big_glass'))
+
           Button() {
-            Text(' - ')
-              .fontSize($r('app.integer.font_size_normal'))
+            Text($r('app.string.minus'))
+              .fontSize($r('app.integer.font_size_big'))
           }.onClick(() => {
             if (this.bigGlassAmount > 0) {
               this.bigGlassAmount--;
@@ -44,7 +54,7 @@ struct AddWaterMenu {
           })
 
           Button() {
-            Text(" + ").fontSize($r('app.integer.font_size_normal'))
+            Text($r('app.string.plus')).fontSize($r('app.integer.font_size_big'))
 
           }.onClick(() => {
             this.bigGlassAmount++;
@@ -59,7 +69,7 @@ struct AddWaterMenu {
             .height("10%")
           Text($r('app.string.label_small_glass'))
           Button() {
-            Text(' - ').fontSize($r('app.integer.font_size_normal'))
+            Text($r('app.string.minus')).fontSize($r('app.integer.font_size_big'))
 
           }.onClick(() => {
             if (this.smallGlassAmount > 0) {
@@ -69,7 +79,7 @@ struct AddWaterMenu {
           })
 
           Button() {
-            Text(" + ").fontSize($r('app.integer.font_size_normal'))
+            Text($r('app.string.plus')).fontSize($r('app.integer.font_size_big'))
 
           }.onClick(() => {
             this.smallGlassAmount++;
@@ -82,12 +92,12 @@ struct AddWaterMenu {
           Text($r('app.string.label_custom'))
           TextInput()
             .type(InputType.Number)
-            .width(70)
+            .width($r("app.integer.input_width"))
             .onChange((value: string) => {
               this.customAmount = Number.parseInt(value);
             })
           Button() {
-            Text(' + ').fontSize($r('app.integer.font_size_normal'))
+            Text($r('app.string.plus')).fontSize($r('app.integer.font_size_big'))
           }
           .onClick(() => {
             this.calculateWater();
