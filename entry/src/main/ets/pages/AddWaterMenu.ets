@@ -14,13 +14,6 @@ struct AddWaterMenu {
   @LocalStorageLink('small_glass_default') private defaultSmallGlass: number = Utility.smallGlassDefaultValue;
   @LocalStorageLink('big_glass_default') private bigGlassDefault: number = Utility.bigGlassDefaultValue;
 
-  aboutToAppear(): void {
-    console.log("AAA addwater aboutToAppear water " + this.waterLevelInMilliLiters)
-    console.log("AAA addwater aboutToAppear big " + this.bigGlassDefault)
-    console.log("AAA addwater aboutToAppear small " + this.defaultSmallGlass)
-
-  }
-
   private calculateWater() {
     this.sumOfWater =
       this.bigGlassAmount * this.bigGlassDefault
