@@ -21,6 +21,10 @@
       "value": " - "
     },
     {
+      "name": "saved",
+      "value": "Changes saved."
+    },
+    {
       "name": "app_name",
       "value": "Water Tracker"
     },

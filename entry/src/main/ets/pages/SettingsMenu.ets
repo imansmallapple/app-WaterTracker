@@ -1,5 +1,6 @@
 import { Utility } from '../model/Utility';
 import router from '@ohos.router';
+import promptAction from '@ohos.promptAction';
 
 let storage = LocalStorage.getShared();
 
@@ -15,8 +16,8 @@ struct SettingsMenu {
   build() {
     Flex() {
       Column({ space: this.defaultSpacing }) {
-        Text($r('app.string.label_edit_defaults'))
-        Divider().strokeWidth(8).color('#F1F3F5')
+        Text($r('app.string.label_edit_defaults')).fontSize($r('app.integer.font_size_small'))
+        Divider().strokeWidth(this.defaultSpacing).color($r('app.color.divider_colour'))
         Row({ space: this.defaultSpacing }) {
           Text($r('app.string.label_big_glass_volume'))
           TextInput({ placeholder: this.defaultBigGlass.toString() })
@@ -29,6 +30,10 @@ struct SettingsMenu {
             Text($r('app.string.label_save')).fontSize($r("app.integer.font_size_small")).margin(this.defaultSpacing)
           }.onClick(() => {
             this.defaultBigGlass = this.tempBigGlass;
+            promptAction.showToast({
+              message: $r('app.string.saved'),
+              duration: 1000
+            })
           })
         }
 
@@ -44,11 +49,15 @@ struct SettingsMenu {
             Text($r('app.string.label_save')).fontSize($r("app.integer.font_size_small")).margin(this.defaultSpacing)
           }.onClick(() => {
             this.defaultSmallGlass = this.tempSmallGlass;
+            promptAction.showToast({
+              message: $r('app.string.saved'),
+              duration: 1000
+            })
           })
         }
 
         Button() {
-          Text($r('app.string.button_close')).fontSize(30).margin(this.defaultSpacing)
+          Text($r('app.string.button_close')).fontSize($r('app.integer.font_size_medium')).margin(this.defaultSpacing)
         }.onClick(() => {
           router.back()
         })

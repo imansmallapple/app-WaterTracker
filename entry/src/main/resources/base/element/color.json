@@ -7,6 +7,10 @@
     {
       "name": "water_background",
       "value": "#69D7F0"
+    },
+    {
+      "name": "divider_colour",
+      "value": "#F1F3F5"
     }
   ]
 }

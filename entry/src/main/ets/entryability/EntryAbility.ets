@@ -4,9 +4,6 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import Want from '@ohos.app.ability.Want';
 import window from '@ohos.window';
 import { WaterKeeper } from './WaterKeeper';
-import data_preferences from '@ohos.data.preferences'
-import featureAbility from '@ohos.ability.featureAbility';
-import { Utility } from '../model/Utility';
 
 export default class EntryAbility extends UIAbility {
   private waterKeeper : WaterKeeper;
