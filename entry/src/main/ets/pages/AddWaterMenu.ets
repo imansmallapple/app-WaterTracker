@@ -33,7 +33,7 @@ struct AddWaterMenu {
           Text(this.bigGlassAmount.toString())
           Image($r('app.media.tallGlass'))
             .autoResize(true)
-            .height("20%")
+            .height("30%")
           Text($r('app.string.label_big_glass'))
 
           Button() {
@@ -59,7 +59,7 @@ struct AddWaterMenu {
           Text(this.smallGlassAmount.toString())
           Image($r('app.media.smallGlass'))
             .autoResize(true)
-            .height("10%")
+            .height("30%")
           Text($r('app.string.label_small_glass'))
           Button() {
             Text($r('app.string.minus')).fontSize($r('app.integer.font_size_big'))
@@ -102,7 +102,7 @@ struct AddWaterMenu {
         Row() {
           Button() {
             Text('Add ' + this.sumOfWater + 'ml of Water')
-              .fontSize($r('app.integer.font_size_big'))
+              .fontSize($r('app.integer.font_size_large'))
               .fontWeight(FontWeight.Bold)
               .backgroundColor(Color.Orange)
           }.alignRules({

@@ -13,6 +13,10 @@
       "value": 50
     },
     {
+      "name": "font_size_large",
+      "value": 40
+    },
+    {
       "name": "default_spacing",
       "value": 10
     },

@@ -5,7 +5,7 @@ let AlignRue: Record<string, Record<string, string | VerticalAlign | HorizontalA
   'top': { 'anchor': '__container__', 'align': VerticalAlign.Top },
   'right': { 'anchor': '__container__', 'align': HorizontalAlign.Center }
 }
-const perc = "50%"
+const perc = "70%"
 let storage = LocalStorage.getShared();
 
 @Entry(storage)
