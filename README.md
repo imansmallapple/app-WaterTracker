@@ -3,6 +3,8 @@
 
 Water Tracker shows a simple demo of in-app communication on an `OpenHarmony` device.
 
+![image](https://github.com/user-attachments/assets/c6b914e2-04c6-4726-8f46-2904d44f9cf6)
+
 ### Table of contents
  [Functionaility](#functionaility)  
  [General Process](#general-process)
