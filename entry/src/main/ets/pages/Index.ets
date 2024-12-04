@@ -49,7 +49,7 @@ struct Index {
             Image($r('app.media.sadGlass'))
               .height(perc)
           } else if (this.glassState == 1) {
-            Image($r('app.media.mediumGlass'))
+            Image($r("app.media.neutralGlass"))
               .height(perc)
           } else {
             Image($r('app.media.happyGlass'))
