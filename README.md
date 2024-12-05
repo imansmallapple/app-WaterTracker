@@ -38,11 +38,11 @@ import data_preferences from '@ohos.data.preferences';
 private dataPreferences: data_preferences.Preferences = null;
 
 constructor(context: Context, storage: LocalStorage) {
-	data_preferences.getPreferences(context, "preferencesName")
-	  .then((pref) => {
+    data_preferences.getPreferences(context, "preferencesName")
+        .then((pref) => {
 	    this.dataPreferences = pref;
 	    this.preparePersistence();
-	  })
+        })
 }
 ```
 > **Note**  
@@ -54,7 +54,7 @@ constructor(context: Context, storage: LocalStorage) {
 
 ```typescript
 this.dataPreferences.get("keyName", "defaultValue").then((value) => {
-	console.log("Loaded data = " + value);
+    console.log("Loaded data = " + value);
 });
 
 ```
@@ -64,9 +64,9 @@ this.dataPreferences.get("keyName", "defaultValue").then((value) => {
 
 ```typescript
 this.dataPreferences.put("keyName", "new value")
-  .then(() => {
-    this.dataPreferences.flush();
-  });
+    .then(() => {
+        this.dataPreferences.flush();
+    });
 ```
 
 - After putting new values into preferences, call `flush()` which will save your data.
@@ -83,7 +83,7 @@ Declare and initialize an instance of LocalStorage. We've done so within the `on
 private storage : LocalStorage;
 
 onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-	this.storage = new LocalStorage();
+    this.storage = new LocalStorage();
 }
 
 ```
@@ -109,7 +109,7 @@ let storage = LocalStorage.getShared();
 @Entry(storage)
 @Component
 struct Index {
-	@LocalStorageLink('linkName') private myVariable: string = "default value";
+    @LocalStorageLink('linkName') private myVariable: string = "default value";
 ```
 
 Once that is done, whenever `myVariable` is reassigned, the changes will be propagated to LocalStorage.
