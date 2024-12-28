@@ -4,13 +4,13 @@
       {
         "name": "default",
         "material": {
-          "certpath": "C:/Users/a60067975/.ohos/config/openharmony/default_WaterTracker_iBzpXXTj75RT9u_cSOzbSkcMqAxWxzYOk-6aDHN7f9w=.cer",
-          "storePassword": "0000001B39F093F89ECBABAB61F0BE5BCE78C907134D427BB5D86235C4163644A4B95E8EFF1F6B8D453094",
+          "certpath": "./.secret/oniro-ci.cer",
+          "storePassword": "0000001BD5A16C997F0EF958596A946A060A50ED61DF4D945A74AB3C462CBCFBE5BA90427A3DEAC0D27D3E",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001BB4B3AE1A13DA6EEC4CB327A5A125AF34FC1B8751F8669C30D10F3CBB853A86D5B5F3A136F7229E",
-          "profile": "C:/Users/a60067975/.ohos/config/openharmony/default_WaterTracker_iBzpXXTj75RT9u_cSOzbSkcMqAxWxzYOk-6aDHN7f9w=.p7b",
+          "keyPassword": "0000001BACA49D623B16BE8A9C4C216A9ED64244F7255BC9AEF8C862264DDA900496AD36202857353771E8",
+          "profile": "./.secret/oniro-ci.p7b",
           "signAlg": "SHA256withECDSA",
-          "storeFile": "C:/Users/a60067975/.ohos/config/openharmony/default_WaterTracker_iBzpXXTj75RT9u_cSOzbSkcMqAxWxzYOk-6aDHN7f9w=.p12"
+          "storeFile": "./.secret/oniro-ci.p12"
         }
       }
     ],
