@@ -6,8 +6,8 @@ import window from '@ohos.window';
 import { WaterKeeper } from './WaterKeeper';
 
 export default class EntryAbility extends UIAbility {
-  private waterKeeper : WaterKeeper;
-  private storage : LocalStorage;
+  private waterKeeper !: WaterKeeper;
+  private storage !: LocalStorage;
 
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');

@@ -4,13 +4,13 @@
       {
         "name": "default",
         "material": {
-          "certpath": "./.secret/oniro-ci.cer",
-          "storePassword": "0000001BD5A16C997F0EF958596A946A060A50ED61DF4D945A74AB3C462CBCFBE5BA90427A3DEAC0D27D3E",
+          "certpath": "C:/Users/c84381641/.ohos/config/openharmony/default_app-WaterTracker_EJbCVQIffa2rf1UFCNq7KS07WAT2rMVRG_CLqWGH3rk=.cer",
+          "storePassword": "00000019D4EA2D001FE299F580C989599D05F0D66ECF34650663F840B294B8064E74D1E49156F8DF50",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001BACA49D623B16BE8A9C4C216A9ED64244F7255BC9AEF8C862264DDA900496AD36202857353771E8",
-          "profile": "./.secret/oniro-ci.p7b",
+          "keyPassword": "000000190AFC0B3A775ADD16222407CDB3A41AC9A02E52B6109453473EF6A59B994056E5E2E0CFD3E9",
+          "profile": "C:/Users/c84381641/.ohos/config/openharmony/default_app-WaterTracker_EJbCVQIffa2rf1UFCNq7KS07WAT2rMVRG_CLqWGH3rk=.p7b",
           "signAlg": "SHA256withECDSA",
-          "storeFile": "./.secret/oniro-ci.p12"
+          "storeFile": "C:/Users/c84381641/.ohos/config/openharmony/default_app-WaterTracker_EJbCVQIffa2rf1UFCNq7KS07WAT2rMVRG_CLqWGH3rk=.p12"
         }
       }
     ],
@@ -18,9 +18,9 @@
       {
         "name": "default",
         "signingConfig": "default",
-        "compileSdkVersion": 10,
-        "compatibleSdkVersion": 9,
-        "runtimeOS": "OpenHarmony"
+        "compileSdkVersion": 11,
+        "compatibleSdkVersion": 11,
+        "runtimeOS": "OpenHarmony",
       }
     ],
     "buildModeSet": [

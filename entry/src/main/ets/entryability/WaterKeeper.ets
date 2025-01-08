@@ -4,7 +4,7 @@ import intl from '@ohos.intl';
 
 export class WaterKeeper {
   private currentDate: string;
-  private dataPreferences: data_preferences.Preferences = null;
+  private dataPreferences!: data_preferences.Preferences;
   private storage: LocalStorage;
 
   constructor(context: Context, storage: LocalStorage) {
@@ -40,7 +40,7 @@ export class WaterKeeper {
   }
 
   getWaterLevel(): number {
-    return this.storage.get(Utility.waterLevel);
+    return this.storage.get(Utility.waterLevel) as number
   }
 
   saveToPersistence() {
