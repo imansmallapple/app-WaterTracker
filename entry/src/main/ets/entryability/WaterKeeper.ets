@@ -1,15 +1,16 @@
-import data_preferences from '@ohos.data.preferences';
 import { Utility } from '../model/Utility';
-import intl from '@ohos.intl';
+import { preferences } from '@kit.ArkData';
+import { intl } from '@kit.LocalizationKit';
+
 
 export class WaterKeeper {
   private currentDate: string;
-  private dataPreferences!: data_preferences.Preferences;
+  private dataPreferences!: preferences.Preferences;
   private storage: LocalStorage;
 
   constructor(context: Context, storage: LocalStorage) {
     this.storage = storage;
-    data_preferences.getPreferences(context, Utility.preferencesName)
+    preferences.getPreferences(context, Utility.preferencesName)
     .then((pref) => {
       this.dataPreferences = pref;
       this.preparePersistence();
