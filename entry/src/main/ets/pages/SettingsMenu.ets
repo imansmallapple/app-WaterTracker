@@ -1,6 +1,4 @@
 import { Utility } from '../model/Utility';
-import router from '@ohos.router';
-import promptAction from '@ohos.promptAction';
 
 let storage = LocalStorage.getShared();
 
@@ -30,7 +28,7 @@ struct SettingsMenu {
             Text($r('app.string.label_save')).fontSize($r("app.integer.font_size_small")).margin(this.defaultSpacing)
           }.onClick(() => {
             this.defaultBigGlass = this.tempBigGlass;
-            promptAction.showToast({
+            this.getUIContext().getPromptAction().showToast({
               message: $r('app.string.saved'),
               duration: 1000
             })
@@ -49,7 +47,7 @@ struct SettingsMenu {
             Text($r('app.string.label_save')).fontSize($r("app.integer.font_size_small")).margin(this.defaultSpacing)
           }.onClick(() => {
             this.defaultSmallGlass = this.tempSmallGlass;
-            promptAction.showToast({
+            this.getUIContext().getPromptAction().showToast({
               message: $r('app.string.saved'),
               duration: 1000
             })
@@ -59,7 +57,7 @@ struct SettingsMenu {
         Button() {
           Text($r('app.string.button_close')).fontSize($r('app.integer.font_size_medium')).margin(this.defaultSpacing)
         }.onClick(() => {
-          router.back()
+          this.getUIContext().getRouter().back()
         })
       }
     }

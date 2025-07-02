@@ -1,5 +1,4 @@
 import { Utility } from '../model/Utility';
-import router from '@ohos.router';
 
 let storage = LocalStorage.getShared();
 
@@ -113,7 +112,7 @@ struct AddWaterMenu {
             if (this.sumOfWater > 0) {
               this.saveToDB();
             }
-            router.back();
+            this.getUIContext().getRouter().back()
           })
         }
       }

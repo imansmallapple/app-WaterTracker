@@ -1,4 +1,3 @@
-import router from '@ohos.router';
 import { Utility } from '../model/Utility';
 
 let AlignRue: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
@@ -70,7 +69,7 @@ struct Index {
           .fontWeight(FontWeight.Bold)
       }
       .onClick(() => {
-        router.pushUrl({
+        this.getUIContext().getRouter().pushUrl({
           url: 'pages/AddWaterMenu'
         })
       })
